@@ -10,16 +10,78 @@
 		<title>Dine</title>
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD4ADT9v9OUUDFxtLz98HfFme9K4Ku1E4&callback=initMap&libraries=places&v=weekly"
 			defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD4ADT9v9OUUDFxtLz98HfFme9K4Ku1E4&callback=initMap&libraries=places&v=weekly"
 		></script>
 		<link rel="stylesheet" type="text/css" href="./style.css" />
-		<script src="./index.js"></script>
+		<script src="./map.js"></script>
+		<script src="./inputs.js"></script>
 	</head>
 	<body>
 		<header>
 			<h1 id="main-title">Dine</h1>
 		</header>
+		<h2>Preferances</h2>
+		<div class="input-flex">
+			<div class="input">
+				<h3>Range</h3>
+				<div class="slidecontainer">
+					<input
+						type="range"
+						min="3"
+						max="20"
+						value="5"
+						class="rangeSlider"
+						id="range"
+					/>
+					<p>Value: <span id="rangeOutput"></span></p>
+				</div>
+			</div>
+			<div class="input">
+				<h3>Type</h3>
+				<ul style="list-style-type: none; margin: 0px">
+					<li><input type="checkbox" /> American</li>
+					<li><input type="checkbox" /> Mexican</li>
+					<li><input type="checkbox" /> Asian</li>
+					<li><input type="checkbox" /> Pizza</li>
+					<li><input type="checkbox" /> Italian</li>
+					<li><input type="checkbox" /> Sandwhich</li>
+					<li><input type="checkbox" /> Sushi</li>
+					<li><input type="checkbox" /> Fast Food</li>
+					<li><input type="checkbox" /> Dessert</li>
+					<li><input type="checkbox" /> Healthy</li>
+				</ul>
+			</div>
+			<div class="rating">
+				<h3>Rating</h3>
+				<input id="ratingInput">
+			</div>
+			<div class="input">
+				<h3>Number of Results</h3>
+				<div id="numberOfResults">
+					<ul style="list-style-type: none">
+						<li><input type="radio" />1</li>
+						<li><input type="radio" />3</li>
+						<li><input type="radio" />5</li>
+						<li><input type="radio" />10</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div id="map"></div>
+		<div class="outputs">
+			<h2>Output 1</h2>
+			<h2>Output 2</h2>
+			<h2>Output 3</h2>
+		</div>
 	</body>
+	<script>
+		var rangeslider = document.getElementById('range');
+		var output = document.getElementById('rangeOutput');
+		output.innerHTML = rangeslider.value;
+
+		rangeslider.oninput = function () {
+			output.innerHTML = this.value;
+		};
+	</script>
 </html>
